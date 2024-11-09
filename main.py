@@ -4,14 +4,21 @@ def main():
     word_count = get_num_words(text)
     character_count = get_character_count(text)
     chars_sorted_list = chars_dict_sorted_list(character_count)
-    print(f"Total Word Count:{word_count}")
-    print(character_count)
+
+    print(f"BookBot V2: Electric Boogaloo -- Initializing Analysis of {Book_path} --")
+    print()
+    print(f"BookBot has found a total of {word_count} words in {Book_path}.")
+    print()
 
 
     for item in chars_sorted_list:
         if not item ["char"].isalpha():
             continue
         print(f"The '{item['char']} character was found {item['num']} times")
+
+    print("-- End of Report --")
+    print()
+    print("BookBot V2 Shutting Down")
    
 def get_num_words(text):
     words = text.split()
