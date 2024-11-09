@@ -8,6 +8,7 @@ def main():
     alice_count = get_alice_count(text)
     hatter_count = get_madhatter_count(text)
     mad_count = get_mad_count(text)
+    #definitions
 
     print(f"BookBot V2: Electric Boogaloo -- Initializing Analysis of {book_title} --")
     print()
@@ -33,22 +34,26 @@ def main():
 def get_book_title(path):
     filename = path.split('/')[-1].replace('.txt', '')
     return filename.replace('_', ' ').title()
-   
+    #finding book title and replacing directory format
+
 def get_num_words(text):
     words = text.split()
     return len(words)
+    #getting count of words using .split()
 
 def get_alice_count(text, case_sensitive=False):
     if not case_sensitive:
         text = text.lower()
     words = text.split()
     return words.count('alice' if not case_sensitive else 'Alice')
+    #getting count of "Alice" adding case sensitive to check for both
 
 def get_mad_count(text, case_sensitive=False):
     if not case_sensitive:
         text = text.lower()
     words = text.split()
     return words.count('mad' if not case_sensitive else 'Mad')
+    #getting count of "Mad" adding case sensitive to check for both
 
 def get_madhatter_count(text, case_sensitive=False):
     if not case_sensitive:
@@ -57,11 +62,13 @@ def get_madhatter_count(text, case_sensitive=False):
     else:
         phrase = "Mad Hatter"
     
-    return text.count(phrase)    
+    return text.count(phrase)  
+    #getting count of Mad Hatter adding case sensitive to check for both.  Checking for phrase  
     
 
 def sort_on(d):
     return d["num"]
+    #returning value associated with "num". Will be used as sort key.
 
 
 def chars_dict_sorted_list(num_chars_dict):
@@ -70,6 +77,7 @@ def chars_dict_sorted_list(num_chars_dict):
         sorted_list.append({"char": ch, "num": num_chars_dict[ch]})
     sorted_list.sort(reverse=True, key=sort_on)
     return sorted_list
+    #a function that creates a dictionary of characters and their counts, converting it to a list of dictionaries, and sorting them by count in descending order.
 
 def get_character_count(text):
     char_count = {}
@@ -80,9 +88,11 @@ def get_character_count(text):
         else:
             char_count[lower_case] = 1
     return char_count
+    #getting initial character count.
 
 def get_book_text(path):
     with open(path) as f:
         return f.read()
+    #reading the .txt file
 
 main()
